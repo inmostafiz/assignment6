@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green-Earth</title>
+    <!-- custom css link -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- tailwind and daisyUI cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <!-- header section starts -->
+    <header class="bg-[#15803D]">
+      <nav class="flex items-center justify-between p-4 w-11/12 m-auto">
+        <div class="green">
+          <span class="text-white font-semibold text-[1.2rem]"
+            >Green Earth</span
+          >
+        </div>
+        <div class="middle_nav">
+          <ul class="flex gap-8 text-white">
+            <li><a href="">About</a></li>
+            <li><a href="">Gallery</a></li>
+            <li><a href="">Plant a Tree</a></li>
+          </ul>
+        </div>
+        <div class="right_nav">
+          <button
+            class="btn bg-[#FACC15] text-[#15803d] rounded-[1.5rem] border-none text-[1rem]"
+          >
+            Plant a Tree
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- hero section -->
+    <section class="bg-[#CFF0DC] flex justify-around items-center">
+      <div class="left_img">
+        <img src="assets/hero-leaf1.png" alt="">
+      </div>
+      <div class="middle_text text-center">
+        <h1 class="text-3xl font-bold text-[#1F2937]">Plant a Tree, Grow a Future</h1>
+        <p class="my-5">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
+        <button class="btn  bg-[#FACC15] text-[#15803d] rounded-[1.5rem] border-none text-[1rem]">Get Involved</button>
+      </div>
+      <div class="right_img">
+        <img src="assets/hero-leaf2.png" alt="">
+      </div>
+    </section>
+    <!-- about section -->
+     <section class="bg-[#F0FdF4] my-12">
+        <h2 class="text-center text-2xl font-bold py-8">About the Campaign</h2>
+        <div class="about_section flex gap-8 items-center w-8/12 mx-auto">
+            <div class="img flex-1">
+                <img class="" src="assets/about.png" alt="">
+            </div>
+            <div class="text flex-1">
+                <p>Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
+                <ul class="py-5">
+                    <li>* Restoration of natural habitats</li>
+                    <li>* Improvement of air quality</li>
+                    <li>* Support for local communities</li>
+                </ul>
+            </div>
+        </div>        
+     </section>
+  </body>
+</html>
+
