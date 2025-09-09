@@ -24,14 +24,14 @@
   <body>
     <!-- header section starts -->
     <header class="bg-[#15803D]">
-      <nav class="flex items-center justify-between p-4 w-11/12 m-auto">
+      <nav class="flex flex-col sm:flex-row items-center sm:justify-between gap-4 sm:gap-0 p-4 w-11/12 m-auto">
         <div class="green">
           <span class="text-white font-semibold text-[1.2rem] primary-font"
             >Green Earth</span
           >
         </div>
         <div class="middle_nav">
-          <ul class="flex gap-8 text-white primary-font">
+          <ul class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-white primary-font text-center sm:text-left">
             <li><a href="">About</a></li>
             <li><a href="">Gallery</a></li>
             <li><a href="">Plant a Tree</a></li>
@@ -39,7 +39,7 @@
         </div>
         <div class="right_nav">
           <button
-            class="btn primary-font bg-[#FACC15] text-[#15803d] rounded-[1.5rem] border-none text-[1rem]"
+            class="btn btn-sm sm:btn-md primary-font bg-[#FACC15] text-[#15803d] rounded-[1.5rem] border-none text-sm sm:text-[1rem] w-full sm:w-auto"
           >
             Plant a Tree
           </button>
@@ -47,47 +47,45 @@
       </nav>
     </header>
     <!-- hero section -->
-    <section class="bg-[#CFF0DC] flex justify-around items-center">
-      <div class="left_img">
-        <img src="assets/hero-leaf1.png" alt="" />
+    <section class="bg-[#CFF0DC] flex flex-col sm:flex-row justify-around items-center gap-6 sm:gap-0 p-6 sm:p-0 text-center sm:text-left">
+      <div class="left_img order-1 hidden sm:block sm:order-none">
+        <img class="w-8/12 sm:w-full mx-auto" src="assets/hero-leaf1.png" alt="" />
       </div>
-      <div class="middle_text text-center">
-        <h1 class="text-3xl font-bold text-[#1F2937] primary-font">
+      <div class="middle_text order-0 sm:order-none text-center">
+        <h1 class="text-2xl sm:text-3xl font-bold text-[#1F2937] primary-font ">
           Plant a Tree, Grow a Future
         </h1>
-        <p class="my-5 primary-font">
+        <p class="my-4 sm:my-5 primary-font text-sm sm:text-base">
           Join our mission to plant 1 million trees and make the Earth greener
           for future generations.
         </p>
         <button
-          class="btn primary-font bg-[#FACC15] text-[#15803d] rounded-[1.5rem] border-none text-[1rem]"
+          class="btn btn-sm sm:btn-md primary-font bg-[#FACC15] text-[#15803d] rounded-[1.5rem] border-none text-sm sm:text-[1rem]"
         >
           Get Involved
         </button>
       </div>
-      <div class="right_img">
-        <img src="assets/hero-leaf2.png" alt="" />
+      <div class="right_img order-2 sm:order-none">
+        <img class="w-8/12 sm:w-full mx-auto" src="assets/hero-leaf2.png" alt="" />
       </div>
     </section>
     <!-- all card section -->
       <!-- Cards will be dynamically inserted here -->
-       
-    </div>
     <!-- about section -->
     <section class="bg-[#F0FdF4] py-10">
-      <h2 class="text-center text-2xl font-bold py-8">About the Campaign</h2>
-      <div class="about_section flex gap-8 items-center w-8/12 mx-auto">
+      <h2 class="text-center text-xl sm:text-2xl font-bold py-8">About the Campaign</h2>
+      <div class="about_section flex flex-col sm:flex-row gap-6 sm:gap-8 items-center w-11/12 sm:w-8/12 mx-auto text-center sm:text-left">
         <div class="img flex-1">
-          <img class="pb-5" src="assets/about.png" alt="" />
+          <img class="pb-5 w-10/12 sm:w-full mx-auto" src="assets/about.png" alt="" />
         </div>
         <div class="text flex-1">
-          <p>
+          <p class="text-sm sm:text-base">
             Green Earth is a global tree plantation initiative dedicated to
             fighting climate change. Since our start, we’ve planted over 500,000
             trees worldwide. By joining our campaign, you help restore forests,
             create habitats for wildlife, and combat global warming.
           </p>
-          <ul class="py-5">
+          <ul class="py-5 text-sm sm:text-base">
             <li>* Restoration of natural habitats</li>
             <li>* Improvement of air quality</li>
             <li>* Support for local communities</li>

@@ -1,12 +1,9 @@
-// app.js
-// Green-Earth – Plants Shop (screenshot-matched card UI + safe DOM insert + modal title fix)
-
 (() => {
   'use strict';
 
-  // -----------------------------
+ 
   // API & State
-  // -----------------------------
+ 
   const API = {
     allPlants: 'https://openapi.programming-hero.com/api/plants',
     categories: 'https://openapi.programming-hero.com/api/categories',
@@ -101,7 +98,7 @@
 
   function normalizeCategory(raw) {
     if (!raw || typeof raw !== 'object') return null;
-    var id =
+    const id =
       raw.category_id != null
         ? raw.category_id
         : raw.id != null
@@ -111,7 +108,7 @@
         : raw._id != null
         ? raw._id
         : String(raw);
-    var name =
+    const name =
       raw.category != null
         ? raw.category
         : raw.category_name != null
@@ -124,8 +121,8 @@
 
   function normalizePlant(raw) {
     if (!raw || typeof raw !== 'object') return null;
-    var id = raw.id != null ? raw.id : raw.plant_id != null ? raw.plant_id : raw.plantId != null ? raw.plantId : raw._id;
-    var name =
+    const id = raw.id != null ? raw.id : raw.plant_id != null ? raw.plant_id : raw.plantId != null ? raw.plantId : raw._id;
+    const name =
       raw.name != null
         ? raw.name
         : raw.plant_name != null
@@ -157,7 +154,7 @@
         : raw.category_name != null
         ? raw.category_name
         : 'Tree';
-    var price = parsePrice(raw.price != null ? raw.price : raw.plant_price != null ? raw.plant_price : raw.cost != null ? raw.cost : 0);
+    const price = parsePrice(raw.price != null ? raw.price : raw.plant_price != null ? raw.plant_price : raw.cost != null ? raw.cost : 0);
     var shortDescription =
       raw.short_description != null
         ? raw.short_description
@@ -193,29 +190,28 @@
     return resp;
   }
 
-  // -----------------------------
-  // Build UI (match screenshot)
-  // -----------------------------
+
+ 
   function buildShopUI() {
     var sections = $all('section');
     var referenceSection = sections.length > 1 ? sections[1] : sections.length > 0 ? sections[0] : null;
 
-    var shop = document.createElement('section');
+    const shop = document.createElement('section');
     shop.id = 'shop';
-    shop.className = 'py-10 bg-white';
+    shop.className = 'py-10 bg-[#f0fdf4]';
     shop.innerHTML = [
       '<div class="w-11/12 mx-auto">',
       '  <h2 class="text-3xl md:text-4xl font-extrabold text-[#111827] text-center mb-8">Choose Your Trees</h2>',
       '  <div class="grid grid-cols-1 md:grid-cols-12 gap-6">',
       '    <aside class="md:col-span-3 lg:col-span-2">',
-      '      <div class="rounded-2xl border border-gray-200 p-3">',
+      '      <div class="rounded-2xl border border-gray-200 p-3 bg-white">',
       '        <ul id="categoryList" class="flex flex-col gap-1"></ul>',
       '      </div>',
       '    </aside>',
       '    <main class="md:col-span-6 lg:col-span-7">',
       '      <div id="plantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>',
       '    </main>',
-      '    <aside class="md:col-span-3 lg:col-span-3">',
+      '    <aside class="md:col-span-3 lg:col-span-3 bg-white rounded-2xl">',
       '      <div class="rounded-2xl border border-gray-200 p-4 sticky top-4">',
       '        <div class="flex items-center justify-between mb-3">',
       '          <h3 class="text-lg font-semibold text-[#111827]">Your Cart</h3>',
@@ -226,15 +222,13 @@
       '          <span class="font-semibold text-[#111827]">Total:</span>',
       '          <span id="cartTotal" class="font-bold text-[#111827]">৳0</span>',
       '        </div>',
-      '        <button id="clearCartBtn" class="btn btn-sm w-full mt-4 bg-red-100 text-red-700 border-0 hover:bg-red-200 rounded-full">Clear All</button>',
-      '      </div>',
       '    </aside>',
       '  </div>',
       '</div>',
     ].join('');
 
-    // Safe insert (fixes "line 125" type error)
-    var parent = referenceSection && referenceSection.parentNode ? referenceSection.parentNode : document.body;
+    
+    const parent = referenceSection && referenceSection.parentNode ? referenceSection.parentNode : document.body;
     if (referenceSection && referenceSection.parentNode) {
       parent.insertBefore(shop, referenceSection);
     } else {
@@ -265,13 +259,13 @@
   }
 
   function ensureModal() {
-    var existing = $('#plantModal');
+    const existing = $('#plantModal');
     if (existing) {
       els.modal = existing;
       els.modalContent = $('#modalContent', existing);
       return;
     }
-    var modal = document.createElement('dialog');
+   const modal = document.createElement('dialog');
     modal.id = 'plantModal';
     modal.className = 'modal';
     modal.innerHTML =
@@ -295,8 +289,8 @@
     els.categoryListEl.innerHTML = '';
 
     function makeItem(id, name) {
-      var li = document.createElement('li');
-      var btn = document.createElement('button');
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
       btn.type = 'button';
       btn.setAttribute('data-cat-id', String(id));
       btn.className = 'w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-green-50';
@@ -309,8 +303,8 @@
     }
 
     els.categoryListEl.appendChild(makeItem('all', 'All Trees'));
-    for (var i = 0; i < categories.length; i++) {
-      var c = categories[i];
+    for (let i = 0; i < categories.length; i++) {
+      const c = categories[i];
       els.categoryListEl.appendChild(makeItem(c.id, c.name));
     }
 
@@ -318,10 +312,10 @@
   }
 
   function setActiveCategoryButton(id) {
-    var buttons = $all('button[data-cat-id]', els.categoryListEl);
-    for (var i = 0; i < buttons.length; i++) {
-      var b = buttons[i];
-      var active = b.getAttribute('data-cat-id') === String(id);
+    const buttons = $all('button[data-cat-id]', els.categoryListEl);
+    for (let i = 0; i < buttons.length; i++) {
+      const b = buttons[i];
+      const active = b.getAttribute('data-cat-id') === String(id);
       b.classList.toggle('bg-green-700', active);
       b.classList.toggle('text-white', active);
       b.classList.toggle('font-medium', active);
@@ -340,9 +334,9 @@
       return;
     }
 
-    for (var i = 0; i < plants.length; i++) {
-      var p = plants[i];
-      var card = document.createElement('div');
+    for (let i = 0; i < plants.length; i++) {
+      const p = plants[i];
+      const card = document.createElement('div');
       card.className = 'bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden';
       card.innerHTML =
         '<div class="w-full h-44 bg-gray-100">' +
@@ -374,8 +368,8 @@
         '  <button class="btn w-full mt-3 bg-[#15803D] text-white border-0 rounded-full">Add to Cart</button>' +
         '</div>';
 
-      // Modal open (pass full plant object to keep correct title fallback)
-      var nameBtn = $('button[data-detail-id]', card);
+      // Modal opener
+      const nameBtn = $('button[data-detail-id]', card);
       if (nameBtn) {
         nameBtn.addEventListener('click', (function (plantObj) {
           return function () {
@@ -385,7 +379,7 @@
       }
 
       // Add to cart
-      var addBtn = $('button.btn', card);
+      const addBtn = $('button.btn', card);
       if (addBtn) {
         addBtn.addEventListener('click', (function (plantObj) {
           return function () {
@@ -403,8 +397,8 @@
     els.cartListEl.innerHTML = '';
 
     // Group by id for qty
-    var grouped = {};
-    for (var i = 0; i < state.cart.length; i++) {
+    const grouped = {};
+    for (let i = 0; i < state.cart.length; i++) {
       var it = state.cart[i];
       if (!grouped[it.id]) grouped[it.id] = { id: it.id, name: it.name, price: it.price, qty: 0 };
       grouped[it.id].qty += 1;
@@ -413,7 +407,7 @@
     var keys = Object.keys(grouped);
     if (!keys.length) {
       els.cartListEl.innerHTML =
-        '<li class="text-sm text-gray-500 bg-white rounded-lg p-3 border">Cart is empty</li>';
+        '<li class="text-sm text-gray-500 bg-white rounded-lg p-3"></li>';
     } else {
       for (var k = 0; k < keys.length; k++) {
         var g = grouped[keys[k]];
@@ -455,9 +449,9 @@
       state.cart.length + ' ' + (state.cart.length === 1 ? 'item' : 'items');
   }
 
-  // -----------------------------
+
   // Handlers
-  // -----------------------------
+
   async function handleCategoryClick(catId) {
     if (state.activeCategoryId === catId) return;
     state.activeCategoryId = catId;
@@ -572,7 +566,7 @@
           '</div>';
       }
 
-      var addBtn = $('#modalAddCart', els.modalContent || document);
+      const addBtn = $('#modalAddCart', els.modalContent || document);
       if (addBtn) {
         addBtn.addEventListener('click', function () {
           addToCart(merged);
@@ -619,9 +613,9 @@
       var data = await fetchJSON(API.allPlants);
       var plants = extractArray(data).map(normalizePlant).filter(function (x) { return !!x; });
       // Ensure each plant has a proper name
-      for (var i = 0; i < plants.length; i++) {
+      for (let i = 0; i < plants.length; i++) {
         if (!plants[i].name || plants[i].name === 'Unknown Plant') {
-          var r = plants[i]._raw || {};
+          const r = plants[i]._raw || {};
           plants[i].name = r.plant_name || r.name || r.title || 'Tree';
         }
       }
@@ -670,17 +664,6 @@
     els.globalSpinner = $('#globalSpinner');
 
     buildShopUI();
-
-    // donation form (optional UX)
-    var donateForm = $('#donationForm');
-    if (donateForm) {
-      donateForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        alert('Thank you for your contribution! 🌱');
-        donateForm.reset();
-      });
-    }
-
     loadCategories();
     loadAllPlants();
     renderCart();
